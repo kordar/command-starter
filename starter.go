@@ -39,7 +39,7 @@ func (m CommandModule) Load(value interface{}) {
 	if flagParse {
 		flag.Parse()
 	}
-	command.StartCmd(name)
+	command.StartCmd(f)
 }
 
 func (m CommandModule) Close() {
