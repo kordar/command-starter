@@ -35,7 +35,7 @@ func (m CommandModule) Load(value interface{}) {
 	}
 	val := cast.ToString(item["value"])
 	flag.StringVar(&f, name, val, usage)
-	flagParse := cast.ToBool(item["flagParse"])
+	flagParse := cast.ToBool(item["flag-parse"])
 	if flagParse {
 		flag.Parse()
 	}
