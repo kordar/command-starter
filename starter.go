@@ -23,7 +23,7 @@ func (m CommandModule) Load(value interface{}) {
 	if item["name"] != "" {
 		name = item["name"]
 	}
-	usage := "函数名称"
+	usage := "function name"
 	if item["usage"] != "" {
 		usage = item["usage"]
 	}
