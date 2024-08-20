@@ -10,6 +10,12 @@ var (
 	f string
 )
 
+func AddCli(cli ...command.FuncCli) {
+	for _, fCli := range cli {
+		command.SetCmd(fCli)
+	}
+}
+
 type CommandModule struct {
 }
 
@@ -27,7 +33,12 @@ func (m CommandModule) Load(value interface{}) {
 	if item["usage"] != "" {
 		usage = item["usage"]
 	}
-	flag.StringVar(&f, name, item["value"], usage)
+	val := cast.ToString(item["value"])
+	flag.StringVar(&f, name, val, usage)
+	flagParse := cast.ToBool(item["flagParse"])
+	if flagParse {
+		flag.Parse()
+	}
 	command.StartCmd(name)
 }
 
